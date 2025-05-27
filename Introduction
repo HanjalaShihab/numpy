@@ -9,3 +9,5 @@ In python we have lists that serve the pupose of arrays but they are slow to pro
 NumPy aims to provide an array object that is up to 50x faster than traditional python lists
 
 The array object in NumPy called ndarray, it provides a lot of supporting functions that make working with ndarray very easy.
+
+we can install NumPy by creating a environment varible and prompting pip install numpy in it
