@@ -1,1 +1,1 @@
-It's a repo which consist of the practices of NumPy
+It's a repo which consists of the practices of NumPy
