@@ -17,12 +17,13 @@
     }
     .drawflow-node {
       border-radius: 8px;
-      background: white;
+      background: rgb(13, 98, 209) !important;
       padding: 10px;
       border: 2px solid #007bff; /* Node border color */
-      color: #333;
-      font-size: 16px;
-      min-width: 120px;
+      color: #ffffff !important;
+      font-size: 19px;
+      min-width: 100px;
+      text-align: center;
     }
     .drawflow-node[data-node="dynamic"] {
       background-color: #f0fff0;
@@ -39,15 +40,16 @@
     }
     #controls {
       position: fixed;
-      top: 10px;
-      left: 10px;
+      top: 50px;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 10;
       background: white;
       border: 1px solid #ccc;
       padding: 10px;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      width: 100%;
+      width: 80%;
       display: flex;
       justify-content: space-evenly;
       align-content: center;
