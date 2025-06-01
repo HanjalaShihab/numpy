@@ -13,21 +13,26 @@
     #drawflow {
       width: 100vw;
       height: 100vh;
-      background-color: #f4f4f4;
     }
     .drawflow-node {
       border-radius: 8px;
       background: rgb(8, 138, 99) !important;
       padding: 10px;
-      border: 2px solid #007bff; /* Node border color */
+      border: 2px solid #007bff;
       color: #ffffff !important;
       font-size: 19px;
       min-width: 100px;
       text-align: center;
     }
-    .drawflow-node[data-node="dynamic"] {
-      background-color: #f0fff0;
-      font-size: 18px;
+    .drawflow-node.dynamic {
+      font-size: 20px !important;
+    }
+    /* Sub-node style */
+    .drawflow-node.subnode {
+      background-color: #ff300b !important; 
+      color: #ffffff !important; 
+      border: 2px solid #ce2222; 
+      font-size: 16px;
     }
     .drawflow .connection .main-path {
       stroke: #007bff;
@@ -60,7 +65,7 @@
     }
 
     .btns {
-      background-color: red;
+      background-color: rgb(0, 95, 184);
       border: none;
       padding: 12px;
       color: white;
@@ -76,6 +81,7 @@
 <body>
   <div id="controls">
     <button class="btns" id="add-node-btn">Add Node</button>
+    <button class="btns" id="add-sub-node-btn">Add Sub Node</button>
     <button class="btns" id="export-btn">Export JSON</button>
     <button class="btns" id="import-btn">Import JSON</button>
     <input type="file" id="import-file" style="display: none;">
@@ -115,6 +121,11 @@
       `;
     }
 
+    // Helper to create sub-node inner HTML (no heading)
+    function createSubNodeContent(content) {
+      return `<div>${content}</div>`;
+    }
+
     // Add Node button
     document.getElementById('add-node-btn').addEventListener('click', () => {
       const nodeName = prompt("Enter node name:");
@@ -122,16 +133,27 @@
       const extraInfo = prompt("Enter extra info (optional):");
       editor.addNode(
         nodeName,
-        1, // inputs
-        1, // outputs
-        200, 200, // position
+        1, 1, 200, 200,
         'dynamic',
         {},
         createNode(nodeName, extraInfo)
       );
     });
 
-    // Handle Edit and Delete buttons using event delegation
+    // Add Sub Node button
+    document.getElementById('add-sub-node-btn').addEventListener('click', () => {
+      const subContent = prompt("Enter sub-node content:");
+      if (!subContent) return;
+      editor.addNode(
+        'subnode',
+        1, 1, 200, 200,
+        'subnode',
+        {},
+        createSubNodeContent(subContent)
+      );
+    });
+
+    // Handle Edit and Delete buttons using event delegation (optional)
     document.getElementById('drawflow').addEventListener('click', (event) => {
       if (event.target.classList.contains('edit-node-btn')) {
         event.stopPropagation();
@@ -139,18 +161,29 @@
         const nodeId = parseInt(nodeElement.parentElement.id.replace('node-', ''));
         const currentNode = editor.getNodeFromId(nodeId);
 
-        const currentName = nodeElement.querySelector('strong').textContent;
+        const currentName = nodeElement.querySelector('strong')?.textContent || '';
         const currentExtra = nodeElement.querySelector('p')?.textContent || '';
+        const currentSubContent = nodeElement.textContent.trim();
 
-        const newName = prompt("Enter new name:", currentName);
-        const newExtra = prompt("Enter new extra info:", currentExtra);
-
-        if (newName) {
-          const updatedHTML = createNode(newName, newExtra);
-          currentNode.data = {}; // optionally reset any node data
-          editor.updateNodeDataFromId(nodeId, currentNode.data);
-          editor.updateNodeHtmlFromId(nodeId, updatedHTML);
-          save();
+        if(currentNode.name === 'subnode') {
+          const newSubContent = prompt("Enter new sub-node content:", currentSubContent);
+          if(newSubContent) {
+            const updatedHTML = createSubNodeContent(newSubContent);
+            currentNode.data = {};
+            editor.updateNodeDataFromId(nodeId, currentNode.data);
+            editor.updateNodeHtmlFromId(nodeId, updatedHTML);
+            save();
+          }
+        } else {
+          const newName = prompt("Enter new name:", currentName);
+          const newExtra = prompt("Enter new extra info:", currentExtra);
+          if (newName) {
+            const updatedHTML = createNode(newName, newExtra);
+            currentNode.data = {};
+            editor.updateNodeDataFromId(nodeId, currentNode.data);
+            editor.updateNodeHtmlFromId(nodeId, updatedHTML);
+            save();
+          }
         }
 
       } else if (event.target.classList.contains('delete-node-btn')) {
