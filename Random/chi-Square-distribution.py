@@ -11,3 +11,7 @@ import seaborn as sns
 
 x = np.random.chisquare(df=2, size=(2,3))
 print(x)
+
+
+sns.displot((np.random.chisquare(df=1, size=1000)), kind='kde')
+plt.show()
