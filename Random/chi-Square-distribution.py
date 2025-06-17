@@ -15,3 +15,4 @@ print(x)
 
 sns.displot((np.random.chisquare(df=1, size=1000)), kind='kde')
 plt.show()
+
