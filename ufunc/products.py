@@ -1,14 +1,14 @@
 import numpy as np
 
 arr = np.array([1,2,3,4])
-print(np.prod(arr))  #returns 1*2*3*4
+print(np.prod(arr))  #returns 1*2*3*4 = 25
 print()
 
 
 arr1 = np.array([1,2,3,4])
 arr2 = np.array([5,6,7,8])
 
-print(np.prod([arr1, arr2]))
+print(np.prod([arr1, arr2]))  #1*2*3*4*5*6*7*8 = 40320
 print()
 
 
