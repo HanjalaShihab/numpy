@@ -17,3 +17,8 @@ print(z)
 #if I want to find out LCM of a array:
 arr = np.array([2,6,9])
 print(np.lcm.reduce(arr))
+
+
+#arranging arrays:
+arr = np.arange(1,11)
+print(np.lcm.reduce(arr))
