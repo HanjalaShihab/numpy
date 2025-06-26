@@ -4,3 +4,11 @@
 #For example, multiples of 4 are 4, 8, 12, 16, 20, ...
               #Multiples of 6 are 6, 12, 18, 24, 30, ...
 #The lowest common multiple of 4 and 6 is the smallest number that appears in both lists of multiples. Here, it is 12.
+
+import numpy as np
+
+x = 4
+y = 6
+
+z = np.lcm(x,y)
+print(z)
