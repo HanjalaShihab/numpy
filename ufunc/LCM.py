@@ -12,3 +12,8 @@ y = 6
 
 z = np.lcm(x,y)
 print(z)
+
+
+#if I want to find out LCM of a array:
+arr = np.array([2,6,9])
+print(np.lcm.reduce(arr))
