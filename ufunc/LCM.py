@@ -22,3 +22,9 @@ print(np.lcm.reduce(arr))
 #arranging arrays:
 arr = np.arange(1,11)
 print(np.lcm.reduce(arr))
+
+
+array = np.array([4,5,6,7,8])
+y = np.lcm.reduce(array)
+
+print(y)
