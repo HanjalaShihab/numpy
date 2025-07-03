@@ -16,3 +16,8 @@ arr2 = np.array([3,4,5,6])
 
 newarr = np.union1d(arr1,arr2)
 print(newarr)
+
+
+#Finding intersection:
+x = np.intersect1d(arr1, arr2)  #it will find the common elements
+print(x)
