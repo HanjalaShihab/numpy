@@ -9,3 +9,6 @@ x = np.unique(arr)  #it will remove the duplicate values
 print(x)
 
 
+#Finding union:
+arr1 = np.array([1,2,3,4])
+arr2 = np.array([3,4,5,6])
