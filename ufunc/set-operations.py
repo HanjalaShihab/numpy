@@ -26,3 +26,8 @@ print(x)
 #Finding difference:
 y = np.setdiff1d(arr1, arr2, assume_unique=True)
 print(y)
+
+
+#Symmetric difference(deleting only commons):
+y = np.setxor1d(arr1, arr2, assume_unique=True)
+print(x)
