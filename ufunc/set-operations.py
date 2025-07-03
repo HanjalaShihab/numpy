@@ -25,5 +25,8 @@ print(x)
 print()
 
 
-
+#Finding difference:
+y = np.setdiff1d(arr1, arr2, assume_unique=True)
+print(y)
+print()
 
