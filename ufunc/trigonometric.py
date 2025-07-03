@@ -20,3 +20,10 @@ print()
 arr = np.array([90,180, 270, 360])
 x = np.deg2rad(arr)
 print(x)
+print()
+
+
+#converting radians into degrees:
+y = np.rad2deg(x)
+print(y)
+print()
