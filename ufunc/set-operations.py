@@ -19,6 +19,11 @@ print(newarr)
 print()
 
 
+#Finding intersection:
+x = np.intersect1d(arr1, arr2, assume_unique=True)  #it will find the common elements
+print(x)
+print()
+
 
 
 
